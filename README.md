@@ -213,106 +213,6 @@ Authenticates and appends report data to Google Sheets
 
 ---
 
-## Customization
-
-### Modify Questions
-Edit the `QUESTIONS` dictionary to change or add fields:
-
-```python
-QUESTIONS = {
-    "YourField": "Your question text here?",
-}
-```
-
-### Add Vehicle Makes
-Update `KNOWN_MAKES` set:
-
-```python
-KNOWN_MAKES = {
-    "FORD", "TOYOTA", "YOUR_BRAND"
-}
-```
-
-### Change Theme
-Modify CSS in the `st.markdown()` section:
-
-```python
-st.markdown("""
-<style>
-    .stApp { 
-        background-color: #YourColor;
-    }
-</style>
-""", unsafe_allow_html=True)
-```
-
-### Adjust AI Behavior
-Modify the system prompt in `generate_friendly_reply()`:
-
-```python
-"content": "Your custom instructions here..."
-```
-
----
-
-## Troubleshooting
-
-### Groq API Not Working
-- **Check API Key**: Verify key in secrets.toml is correct
-- **Check Quota**: Free tier has rate limits
-- **Check Network**: Ensure internet connectivity
-- **Fallback**: System automatically uses base messages if API fails
-
-### Google Sheets Error
-- **Check Permissions**: Ensure service account has Editor access
-- **Check Sheet Name**: Verify `SHEET_NAME = "Safety_Reports"` matches your sheet
-- **Check Credentials**: Validate all fields in `gcp_service_account`
-
-### No Response from Bot
-- **Check Console**: Look for error messages in terminal
-- **Check Secrets**: Ensure `.streamlit/secrets.toml` exists
-- **Restart App**: Stop and restart Streamlit
-
----
-
-## Security Best Practices
-
-- **Never commit** `.streamlit/secrets.toml` to version control
-- Add to `.gitignore`:
-  ```
-  .streamlit/secrets.toml
-  .env
-  *.key
-  ```
-- Use environment variables in production
-- Rotate API keys regularly
-- Limit service account permissions to minimum required
-
----
-
-## Deployment
-
-### Streamlit Cloud
-
-1. Push code to GitHub (exclude secrets.toml)
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Connect your repository
-4. Add secrets in Streamlit Cloud dashboard
-5. Deploy
-
-### Docker
-
-```dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["streamlit", "run", "app.py"]
-```
-
----
-
 ## Performance
 
 - **Average Response Time**: 1-3 seconds (with Groq API)
@@ -355,9 +255,7 @@ This project is licensed under the MIT License - see LICENSE file for details.
 ## Support
 
 For issues, questions, or feature requests:
-- Open an issue on GitHub
-- Contact: support@yourdomain.com
-- Documentation: [Wiki](https://github.com/yourrepo/wiki)
+- Open an issue on Github
 
 ---
 
@@ -380,5 +278,3 @@ For issues, questions, or feature requests:
 - Professional black/orange theme
 
 ---
-
-**Built with ❤️ for vehicle safety**
